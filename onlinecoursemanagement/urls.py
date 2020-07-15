@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 from courses import views
-from django.views.generic import TemplateView
+#from django.views.generic import TemplateView
 from django.contrib.auth import views as auth_views
 
 from courses import views
@@ -47,7 +47,7 @@ urlpatterns = [
          name='change_password_done'),
 
     # -------------------Profile----------------------------
-    path('profile/', views.ProfileView.as_view(), name='profile'),
+    #path('profile/', views.ProfileView.as_view(), name='profile'),
 
 
 ]

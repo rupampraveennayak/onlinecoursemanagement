@@ -4,7 +4,7 @@ from django.views.generic import TemplateView, ListView, CreateView, UpdateView,
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Course, ProfileModel, CustomUserModel, EnroledCourseModel
 # Create your views here.
-from .forms import CustomUserCreationForm, AddCourseForm
+from courses.forms import CustomUserCreationForm,AddCourseForm
 
 
 class SignUpVeiw(CreateView):
@@ -59,6 +59,6 @@ class CourseDelete(LoginRequiredMixin, DeleteView):
     template_name = 'coursedelete.html'
     success_url = reverse_lazy('course_list_view')
 
-class ProfileView(ListView):
-    model = ProfileModel
-    template_name = 'profile.html'
+# class ProfileView(ListView):
+#     model = ProfileModel
+#     template_name = 'profile.html'
