@@ -16,19 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
-from courses import views
-#from django.views.generic import TemplateView
+from django.views.generic import DeleteView
 from django.contrib.auth import views as auth_views
-
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView,PasswordChangeForm
 from courses import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('', views.CoursesListView.as_view(), name='home'),
+    path('coursedetail/<int:pk>/', views.CourseDetailView.as_view(), name='coursedetail'),
     # path('', views.course_list, name='home'),
     # --------------------admin course create,read, update, delete-----------------
     path('adminhome/', views.AdminHome.as_view(), name='adminhome'),
+    path('deleteuser/<int:pk>/',views.DeleteUserView.as_view(), name='delete_user'),
     path('newcourse/', views.CreateNewCourse.as_view(), name='newcourse'),
     path('courselist/', views.CourseList.as_view(), name='course_list_view'),
     # path('courselist/', views.course_list_view, name='course_list_view'),
@@ -47,7 +48,8 @@ urlpatterns = [
          name='change_password_done'),
 
     # -------------------Profile----------------------------
-    #path('profile/', views.ProfileView.as_view(), name='profile'),
+    path('profile/', views.ProfileView.as_view(), name='profile'),
+    path('enroll/', views.Enroll.as_view(), name='enroll'),
 
 
 ]

@@ -82,22 +82,22 @@ class ProfileView(ListView,LoginRequiredMixin):
      login_url = 'login'
      redirect_field_name = 'login'
 
-     class DeleteUserView(LoginRequiredMixin, DeleteView):
+class DeleteUserView(LoginRequiredMixin, DeleteView):
          model = CustomUserModel
          template_name = 'adminhome.html'
          success_url = reverse_lazy('adminhome')
          login_url = 'login'
          redirect_field_name = 'login'
 
-     class Enroll(LoginRequiredMixin, CreateView):
+class Enroll(LoginRequiredMixin, CreateView):
          model = EnroledCourseModel
          form_class = EnroldModelForm
          template_name = 'courses/profilemodel_list.html'
          success_url = 'profile'
 
 
-     def enroledcourse(request):
-         objects = EnroledCourseModel.objects.filter()
-         for x in objects:
-             print(x)
-         return render(request, 'adminhome.html', {'objects': objects})
+def enroledcourse(request):
+    objects = EnroledCourseModel.objects.filter()
+    for x in objects:
+      print(x)
+    return render(request, 'adminhome.html', {'objects': objects})

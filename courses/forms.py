@@ -1,9 +1,8 @@
 from django  import forms
-
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.core.exceptions import ValidationError
-
 from .models import CustomUserModel
+from courses.models import ProfileModel,EnroledCourseModel
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
@@ -30,3 +29,18 @@ class AddCourseForm(forms.ModelForm):
             return fee
         else:
             raise ValidationError('Fee must be greater than 3000..')
+
+class ProfileModelForm(forms.ModelForm):
+    class Meta:
+        models=ProfileModel
+        fields='__all__'
+
+
+class EnroledCourseForm(forms.ModelForm):
+    course_profile = forms.ModelMultipleChoiceField(queryset=Course.objects.all(), widget=forms.CheckboxSelectMultiple)
+
+    class Meta:
+        model = EnroledCourseModel
+        fields = ['course_profile', 'student']
+
+
