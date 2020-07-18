@@ -4,7 +4,7 @@ from django.views.generic import TemplateView, ListView, CreateView, UpdateView,
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Course, ProfileModel, CustomUserModel, EnroledCourseModel
 # Create your views here.
-from courses.forms import CustomUserCreationForm,AddCourseForm
+from .forms import CustomUserCreationForm,AddCourseForm
 
 
 class SignUpVeiw(CreateView):
